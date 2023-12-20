@@ -19,6 +19,10 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 RUN docker-php-ext-install mysqli
 
+COPY ./extensions/*.so /usr/local/lib/php/extensions/no-debug-non-zts-20220829/
+                       
+RUN docker-php-ext-enable bolt
+
 # 安装 composer
 RUN curl -o /usr/bin/composer https://mirrors.aliyun.com/composer/composer.phar && chmod +x /usr/bin/composer
 
